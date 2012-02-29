@@ -5,10 +5,6 @@ package ListClass;
  */
 public class List {
 
-    private ListElement head;
-    private ListElement tail;
-    private int count;
-
     public class ListElement {
 
         private int value;
@@ -171,4 +167,8 @@ public class List {
         tail = newElement;
         count = 1;
     }
+    
+    private ListElement head;
+    private ListElement tail;
+    private int count;
 }
