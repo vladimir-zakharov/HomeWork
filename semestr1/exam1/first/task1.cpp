@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+void main()
+{
+	char str[256];
+	char *string = gets(str);
+	
+	int size = strlen(string);
+	int end = size - 1;
+	int begin = 0;
+	bool flag = true;
+
+	while (begin < size)
+	{
+		if (string[begin] == ' ')
+			begin++;
+			
+		if (string[end] == ' ')
+				end--;
+
+		if (string[begin] != string[end])
+		{
+			flag = false;
+			break;
+		}
+
+		begin++;
+		end--;
+	}
+
+	if (flag)
+		printf("Yes\n");
+	else
+		printf("No\n");
+}
+
+	
+
