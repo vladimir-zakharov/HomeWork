@@ -19,7 +19,6 @@ public class HashTableTest {
     public void testAddToHash() {
         HashTable hash = new HashTable();
         hash.addToHash("hello");
-
     }
 
     /**
@@ -29,5 +28,6 @@ public class HashTableTest {
     public void testReturnHashSize() {
         HashTable hash = new HashTable();
         assertEquals(100, hash.returnHashSize());
+        assertFalse(hash.returnHashSize() == 5);
     }
 }
