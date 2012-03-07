@@ -33,9 +33,9 @@ public class Main {
     public static void main(String[] argv) {
         int[][] mass = new int[size][size];
         in(mass);
-        PrintStandart printStandart = new PrintStandart();
+        PrintMass printStandart = new PrintStandart();
         printStandart.printMass(mass);
-        PrintSpiral printSpiral = new PrintSpiral();
+        PrintMass printSpiral = new PrintSpiral();
         printSpiral.printMass(mass);
     }
 }
