@@ -46,7 +46,7 @@ public class List {
     }
 
     /**
-     * add elemet to tail of list
+     * add element to tail of list
      *
      * @param value
      */
@@ -111,7 +111,7 @@ public class List {
     }
 
     /**
-     * delete elment of this position
+     * delete element of this position
      *
      * @param position
      */
@@ -170,7 +170,7 @@ public class List {
     }
 
     /**
-     * return previos position
+     * return previous position
      *
      * @param position
      * @return
