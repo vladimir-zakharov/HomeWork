@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author spec
+ * @author vladimir-zakharov
  */
 public class HashTableTest {
 
