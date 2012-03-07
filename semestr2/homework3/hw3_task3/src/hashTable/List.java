@@ -203,7 +203,6 @@ public class List {
         head = newElement;
         tail = newElement;
         count = 1;
-        HashTable hash = new HashTable();
     }
     
     /**
