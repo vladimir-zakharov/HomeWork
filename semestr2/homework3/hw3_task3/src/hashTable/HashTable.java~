@@ -19,7 +19,7 @@ public class HashTable implements InterfaceHashTable {
     /**
      * add element to hash table
      *
-     * @param string string, which you want to add
+     * @param string
      */
     @Override
     public void addToHash(String string) {
@@ -30,7 +30,7 @@ public class HashTable implements InterfaceHashTable {
     /**
      * delete element of the hash table
      *
-     * @param string string, which you want to delete
+     * @param string
      */
     @Override
     public void deleteElement(String string) {
@@ -62,7 +62,9 @@ public class HashTable implements InterfaceHashTable {
     }
 
     /**
-     * @return size of hash table
+     * return size of hash table
+     *
+     * @return
      */
     @Override
     public int returnHashSize() {
@@ -72,8 +74,8 @@ public class HashTable implements InterfaceHashTable {
     /**
      * checks existence of the element in the hash table
      *
-     * @param string string, which you check for existence
-     * @return true if exists; false if not exists
+     * @param string
+     * @return
      */
     @Override
     public boolean isExists(String string) {
@@ -92,8 +94,8 @@ public class HashTable implements InterfaceHashTable {
     /**
      * calculate the hash function
      *
-     * @param string calculate hash function for this string
-     * @return hash function of string
+     * @param string
+     * @return
      */
     private int hashFunction(String string) {
         return string.hashCode() % hashSize;
