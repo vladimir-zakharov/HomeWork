@@ -1,7 +1,7 @@
 package hashTable;
 
 /**
- * use to create List
+ * use to create a List
  *
  * @author vladimir-zakharov
  */
@@ -30,7 +30,7 @@ public class List {
     }
 
     /**
-     * add element to head of list
+     * add element to head of the list
      *
      * @param value
      */
@@ -46,7 +46,7 @@ public class List {
     }
 
     /**
-     * add element to tail of list
+     * add element to tail of the list
      *
      * @param value
      */
@@ -88,7 +88,7 @@ public class List {
      * @param position
      * @return
      */
-    public String PositionValue(ListElement position) {
+    public String positionValue(ListElement position) {
         return position.value;
     }
 
@@ -97,7 +97,7 @@ public class List {
      *
      * @return
      */
-    public String HeadValue() {
+    public String headValue() {
         return head.value;
     }
 
@@ -106,7 +106,7 @@ public class List {
      *
      * @return
      */
-    public String TailValue() {
+    public String tailValue() {
         return tail.value;
     }
 
@@ -130,6 +130,27 @@ public class List {
             position.next.prev = position.prev;
         }
         count--;
+    }
+
+    /**
+     * checks existence of the element in the list
+     *
+     * @param string
+     * @return
+     */
+    public boolean isExist(String string) {
+        ListElement temp = head;
+        boolean successfullSearch = false;
+
+        while (temp != null) {
+            if (temp.value.equals(string)) {
+                successfullSearch = true;
+                break;
+            }
+            temp = temp.next;
+        }
+
+        return successfullSearch;
     }
 
     /**
@@ -208,13 +229,13 @@ public class List {
     /**
      * head of list
      */
-    private ListElement head;
     
+    private ListElement head;
     /**
      * tail of list
      */
-    private ListElement tail;
     
+    private ListElement tail;
     /**
      * number of elements
      */

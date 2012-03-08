@@ -1,16 +1,11 @@
 package hashTable;
 
 /**
- * use to create Hash table
+ * use to create a hash table
  *
  * @author vladimir-zakharov
  */
 public class HashTable implements InterfaceHashTable {
-
-    /**
-     * size of hash table
-     */
-    final private int hashSize = 100;
 
     /**
      * constructor for hash table
@@ -33,6 +28,40 @@ public class HashTable implements InterfaceHashTable {
     }
 
     /**
+     * delete element of the hash table
+     *
+     * @param string
+     */
+    @Override
+    public void deleteElement(String string) {
+        boolean successfullDelete = false;
+
+        for (int i = 0; i < hashSize; ++i) {
+            List.ListElement temp = buckets[i].firstPosition();
+
+            while (temp != null) {
+                if (buckets[i].positionValue(temp).equals(string)) {
+                    buckets[i].deleteElement(temp);
+                    successfullDelete = true;
+                    break;
+                }
+
+                if (successfullDelete) {
+                    break;
+                } else {
+                    temp = buckets[i].nextPosition(temp);
+                }
+            }
+        }
+
+        if (successfullDelete) {
+            System.out.println("Successfully deletion");
+        } else {
+            System.out.println("Element not found");
+        }
+    }
+
+    /**
      * return size of hash table
      *
      * @return
@@ -43,7 +72,27 @@ public class HashTable implements InterfaceHashTable {
     }
 
     /**
-     * calculate hash function
+     * checks existence of the element in the hash table
+     *
+     * @param string
+     * @return
+     */
+    @Override
+    public boolean isExists(String string) {
+        boolean successfullSearch = false;
+
+        for (int i = 0; i < hashSize; ++i) {
+            if (buckets[i].isExist(string)) {
+                successfullSearch = true;
+                break;
+            }
+        }
+
+        return successfullSearch;
+    }
+
+    /**
+     * calculate the hash function
      *
      * @param string
      * @return
@@ -51,6 +100,12 @@ public class HashTable implements InterfaceHashTable {
     private int hashFunction(String string) {
         return string.hashCode() % hashSize;
     }
+    
+    /**
+     * size of hash table
+     */
+    final private int hashSize = 100;
+    
     /**
      * hash table elements
      */
