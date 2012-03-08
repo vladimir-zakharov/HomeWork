@@ -15,9 +15,9 @@ public class List {
         /**
          * constructor for ListElement
          *
-         * @param value string, which you init element
-         * @param next link to next element
-         * @param prev link to previous element
+         * @param value
+         * @param next
+         * @param prev
          */
         public ListElement(String value, ListElement next, ListElement prev) {
             this.next = next;
@@ -32,7 +32,7 @@ public class List {
     /**
      * add element to head of the list
      *
-     * @param value string, which you want to add
+     * @param value
      */
     public void addToHead(String value) {
         if (count == 0) {
@@ -48,7 +48,7 @@ public class List {
     /**
      * add element to tail of the list
      *
-     * @param value string, which you want to add
+     * @param value
      */
     public void addToEnd(String value) {
         if (count == 0) {
@@ -62,10 +62,10 @@ public class List {
     }
 
     /**
-     * insert element into list behind current position
+     * insert element into list
      *
-     * @param position current position
-     * @param value string, which you want to add
+     * @param position
+     * @param value
      */
     public void insert(ListElement position, String value) {
         if (count == 0) {
@@ -83,31 +83,37 @@ public class List {
     }
 
     /**
-     * @param position current position
-     * @return value of current position
+     * return value of this position
+     *
+     * @param position
+     * @return
      */
     public String positionValue(ListElement position) {
         return position.value;
     }
 
     /**
-     * @return value of head
+     * return value of head
+     *
+     * @return
      */
     public String headValue() {
         return head.value;
     }
 
     /**
-     * @return value of tail
+     * return value of tail
+     *
+     * @return
      */
     public String tailValue() {
         return tail.value;
     }
 
     /**
-     * delete element of current position
+     * delete element of this position
      *
-     * @param position current position
+     * @param position
      */
     public void deleteElement(ListElement position) {
         if (count == 1) {
@@ -129,8 +135,8 @@ public class List {
     /**
      * checks existence of the element in the list
      *
-     * @param string string, which you check for existence
-     * @return true if exists; false if not exists
+     * @param string
+     * @return
      */
     public boolean isExist(String string) {
         ListElement temp = head;
@@ -148,37 +154,47 @@ public class List {
     }
 
     /**
-     * @return number of elements
+     * return number of elements
+     *
+     * @return
      */
     public int amountElements() {
         return count;
     }
 
     /**
-     * @return head position
+     * return head position
+     *
+     * @return
      */
     public ListElement firstPosition() {
         return head;
     }
 
     /**
-     * @return tail position
+     * return tail position
+     *
+     * @return
      */
     public ListElement endPosition() {
         return tail;
     }
 
     /**
-     * @param position current position
-     * @return next position
+     * return next position
+     *
+     * @param position
+     * @return
      */
     public ListElement nextPosition(ListElement position) {
         return position.next;
     }
 
     /**
-     * @param position current position
-     * @return previous position
+     * return previous position
+     *
+     * @param position
+     * @return
      */
     public ListElement prevPosition(ListElement position) {
         return position.prev;
@@ -209,13 +225,16 @@ public class List {
         tail = newElement;
         count = 1;
     }
+    
     /**
      * head of list
      */
+    
     private ListElement head;
     /**
      * tail of list
      */
+    
     private ListElement tail;
     /**
      * number of elements
