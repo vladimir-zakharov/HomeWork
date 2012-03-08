@@ -1,7 +1,7 @@
 package hashTable;
 
 /**
- * use to create List
+ * use to create a List
  *
  * @author vladimir-zakharov
  */
@@ -15,9 +15,9 @@ public class List {
         /**
          * constructor for ListElement
          *
-         * @param value
-         * @param next
-         * @param prev
+         * @param value string, which you init element
+         * @param next link to next element
+         * @param prev link to previous element
          */
         public ListElement(String value, ListElement next, ListElement prev) {
             this.next = next;
@@ -30,9 +30,9 @@ public class List {
     }
 
     /**
-     * add element to head of list
+     * add element to head of the list
      *
-     * @param value
+     * @param value string, which you want to add
      */
     public void addToHead(String value) {
         if (count == 0) {
@@ -46,9 +46,9 @@ public class List {
     }
 
     /**
-     * add elemet to tail of list
+     * add element to tail of the list
      *
-     * @param value
+     * @param value string, which you want to add
      */
     public void addToEnd(String value) {
         if (count == 0) {
@@ -62,10 +62,10 @@ public class List {
     }
 
     /**
-     * insert element into list
+     * insert element into list behind current position
      *
-     * @param position
-     * @param value
+     * @param position current position
+     * @param value string, which you want to add
      */
     public void insert(ListElement position, String value) {
         if (count == 0) {
@@ -83,37 +83,31 @@ public class List {
     }
 
     /**
-     * return value of this position
-     *
-     * @param position
-     * @return
+     * @param position current position
+     * @return value of current position
      */
-    public String PositionValue(ListElement position) {
+    public String positionValue(ListElement position) {
         return position.value;
     }
 
     /**
-     * return value of head
-     *
-     * @return
+     * @return value of head
      */
-    public String HeadValue() {
+    public String headValue() {
         return head.value;
     }
 
     /**
-     * return value of tail
-     *
-     * @return
+     * @return value of tail
      */
-    public String TailValue() {
+    public String tailValue() {
         return tail.value;
     }
 
     /**
-     * delete elment of this position
+     * delete element of current position
      *
-     * @param position
+     * @param position current position
      */
     public void deleteElement(ListElement position) {
         if (count == 1) {
@@ -133,47 +127,58 @@ public class List {
     }
 
     /**
-     * return number of elements
+     * checks existence of the element in the list
      *
-     * @return
+     * @param string string, which you check for existence
+     * @return true if exists; false if not exists
+     */
+    public boolean isExist(String string) {
+        ListElement temp = head;
+        boolean successfullSearch = false;
+
+        while (temp != null) {
+            if (temp.value.equals(string)) {
+                successfullSearch = true;
+                break;
+            }
+            temp = temp.next;
+        }
+
+        return successfullSearch;
+    }
+
+    /**
+     * @return number of elements
      */
     public int amountElements() {
         return count;
     }
 
     /**
-     * return head position
-     *
-     * @return
+     * @return head position
      */
     public ListElement firstPosition() {
         return head;
     }
 
     /**
-     * return tail position
-     *
-     * @return
+     * @return tail position
      */
     public ListElement endPosition() {
         return tail;
     }
 
     /**
-     * return next position
-     *
-     * @param position
-     * @return
+     * @param position current position
+     * @return next position
      */
     public ListElement nextPosition(ListElement position) {
         return position.next;
     }
 
     /**
-     * return previos position
-     *
-     * @param position
-     * @return
+     * @param position current position
+     * @return previous position
      */
     public ListElement prevPosition(ListElement position) {
         return position.prev;
@@ -203,19 +208,15 @@ public class List {
         head = newElement;
         tail = newElement;
         count = 1;
-        HashTable hash = new HashTable();
     }
-    
     /**
      * head of list
      */
     private ListElement head;
-    
     /**
      * tail of list
      */
     private ListElement tail;
-    
     /**
      * number of elements
      */
