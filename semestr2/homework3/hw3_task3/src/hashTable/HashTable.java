@@ -34,25 +34,11 @@ public class HashTable implements InterfaceHashTable {
      */
     @Override
     public void deleteElement(String string) {
-        boolean successfullDelete = false;
         int hash = hashFunction(string);
-        List.ListElement temp = buckets[hash].firstPosition();
+        List.ListElement temp = buckets[hash].searchPosition(string);
 
-        while (temp != null) {
-            if (buckets[hash].positionValue(temp).equals(string)) {
-                buckets[hash].deleteElement(temp);
-                successfullDelete = true;
-                break;
-            }
-
-            if (successfullDelete) {
-                break;
-            } else {
-                temp = buckets[hash].nextPosition(temp);
-            }
-        }
-
-        if (successfullDelete) {
+        if (temp != null) {
+            buckets[hash].deleteElement(temp);
             System.out.println("Successfully deletion");
         } else {
             System.out.println("Element not found");
@@ -75,14 +61,8 @@ public class HashTable implements InterfaceHashTable {
      */
     @Override
     public boolean isExists(String string) {
-        boolean successfullSearch = false;
         int hash = hashFunction(string);
-
-        if (buckets[hash].isExist(string)) {
-            successfullSearch = true;
-        }
-        
-        return successfullSearch;
+        return buckets[hash].isExist(string);
     }
 
     /**

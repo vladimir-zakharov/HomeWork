@@ -29,12 +29,12 @@ public class HashTableTest {
         HashTable hash = new HashTable();
         hash.addToHash("hello");
         hash.addToHash("world");
-        assertEquals(true, hash.isExists("hello"));
+        assertTrue(hash.isExists("hello"));
         hash.deleteElement("hello");
-        assertEquals(false, hash.isExists("hello"));
-        assertEquals(true, hash.isExists("world"));
+        assertFalse(hash.isExists("hello"));
+        assertTrue(hash.isExists("world"));
         hash.deleteElement("world");
-        assertEquals(false, hash.isExists("world"));
+        assertFalse(hash.isExists("world"));
 
     }
 
@@ -56,8 +56,8 @@ public class HashTableTest {
         HashTable hash = new HashTable();
         hash.addToHash("hello");
         hash.addToHash("world");
-        assertEquals(true, hash.isExists("hello"));
-        assertEquals(false, hash.isExists("test"));
-        assertEquals(true, hash.isExists("world"));
+        assertTrue(hash.isExists("hello"));
+        assertFalse(hash.isExists("test"));
+        assertTrue(hash.isExists("world"));
     }
 }

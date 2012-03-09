@@ -148,6 +148,24 @@ public class List {
     }
 
     /**
+     * search string in the list
+     * 
+     * @param string string, which you want to find
+     * @return position of string, if it exists in the list; else null
+     */
+    public ListElement searchPosition(String string) {
+        ListElement temp = head;
+
+        while (temp != null) {
+            if (temp.value.equals(string)) {
+                return temp;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @return number of elements
      */
     public int amountElements() {
@@ -209,14 +227,17 @@ public class List {
         tail = newElement;
         count = 1;
     }
+    
     /**
      * head of list
      */
     private ListElement head;
+    
     /**
      * tail of list
      */
     private ListElement tail;
+    
     /**
      * number of elements
      */
