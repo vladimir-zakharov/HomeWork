@@ -20,8 +20,8 @@ public class HashTableTest {
         DefaultHashFunction hashFunction = new DefaultHashFunction();
         NewHashFunction newHashFunction = new NewHashFunction();
         HashTable hash = new HashTable(hashFunction);
-        HashTable newHash = new HashTable(newHashFunction);
         hash.addToHash("hello");
+        hash = new HashTable(newHashFunction);
         hash.addToHash("ololo");
     }
 
@@ -33,7 +33,6 @@ public class HashTableTest {
         DefaultHashFunction hashFunction = new DefaultHashFunction();
         NewHashFunction newHashFunction = new NewHashFunction();
         HashTable hash = new HashTable(hashFunction);
-        HashTable newHash = new HashTable(newHashFunction);
         hash.addToHash("hello");
         hash.addToHash("world");
         assertTrue(hash.isExists("hello"));
@@ -42,10 +41,11 @@ public class HashTableTest {
         assertTrue(hash.isExists("world"));
         hash.deleteElement("world");
         assertFalse(hash.isExists("world"));
-        newHash.addToHash("ololo");
-        assertTrue(newHash.isExists("ololo"));
-        newHash.deleteElement("ololo");
-        assertFalse(newHash.isExists("ololo"));
+        hash = new HashTable(newHashFunction);
+        hash.addToHash("ololo");
+        assertTrue(hash.isExists("ololo"));
+        hash.deleteElement("ololo");
+        assertFalse(hash.isExists("ololo"));
 
     }
 
