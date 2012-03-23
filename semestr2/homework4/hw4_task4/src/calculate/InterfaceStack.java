@@ -8,24 +8,26 @@ package calculate;
 public interface InterfaceStack {
 
     /**
-     * push element to head of the stack
+     * push value to the head of the stack
      *
-     * @param value
+     * @param value value, which you want to push
      */
     void push(float value);
 
     /**
-     *
+     * pop an element from the stack
      */
     void pop() throws EmptyStack;
 
     /**
+     * use to return value of the top element
      *
-     * @return
+     * @return value of the top element
      */
     float top();
 
     /**
+     * checks for elements
      *
      * @return true, if stack is empty; else false
      */

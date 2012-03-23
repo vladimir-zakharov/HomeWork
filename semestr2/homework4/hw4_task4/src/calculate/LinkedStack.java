@@ -8,8 +8,9 @@ package calculate;
 public class LinkedStack implements InterfaceStack {
 
     /**
+     * push value to the head of the stack
      *
-     * @param value
+     * @param value value, which you want to push
      */
     @Override
     public void push(float value) {
@@ -20,7 +21,7 @@ public class LinkedStack implements InterfaceStack {
     }
 
     /**
-     *
+     * pop an element from the stack
      */
     @Override
     public void pop() throws EmptyStack {
@@ -31,8 +32,9 @@ public class LinkedStack implements InterfaceStack {
     }
 
     /**
+     * use to return value of the top element
      *
-     * @return
+     * @return value of the top element
      */
     @Override
     public float top() {
@@ -40,8 +42,9 @@ public class LinkedStack implements InterfaceStack {
     }
 
     /**
-     *
-     * @return
+     * checks for elements
+     * 
+     * @return true, if stack is empty; else false
      */
     @Override
     public boolean isEmpty() {
@@ -53,7 +56,7 @@ public class LinkedStack implements InterfaceStack {
     }
 
     /**
-     *
+     * an element of the stack
      */
     private class StackElement {
 
@@ -61,7 +64,7 @@ public class LinkedStack implements InterfaceStack {
         private StackElement next;
     }
     /**
-     *
+     * the top element of the stack
      */
     private StackElement head;
 }
