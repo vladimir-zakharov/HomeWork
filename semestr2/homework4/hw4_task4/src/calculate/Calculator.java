@@ -107,7 +107,7 @@ public class Calculator {
         try {
             stack.pop();
         } catch (EmptyStack empty) {
-            System.out.println("Stack is empty");
+            System.out.println("Error: Stack is empty");
         }
     }
     /**

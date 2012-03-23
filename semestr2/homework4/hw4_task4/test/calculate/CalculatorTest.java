@@ -38,13 +38,13 @@ public class CalculatorTest {
         try {
             division = calc.division((float) 2.6, (float) 2.0);
         } catch (DivNull divNull) {
-            System.out.println("division by zero");
+            System.out.println("Error: division by zero");
         }
         assertEquals(division, (float) 1.3, 0.0);
         try {
             division = calc.division((float) 2.6, (float) 0.0);
         } catch (DivNull divNull) {
-            System.out.println("division by zero");
+            System.out.println("Error: division by zero");
         }
     }
 
