@@ -17,7 +17,7 @@ public interface InterfaceStack {
     /**
      *
      */
-    void pop();
+    void pop() throws EmptyStack;
 
     /**
      *

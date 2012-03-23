@@ -7,7 +7,7 @@ package calculate;
 public class ArrayStack implements InterfaceStack {
 
     /**
-     *
+     * constructor for array stack
      */
     public ArrayStack() {
         this.elements = new float[0];
@@ -30,10 +30,11 @@ public class ArrayStack implements InterfaceStack {
      *
      */
     @Override
-    public void pop() {
-        if (!isEmpty()) {
-            elements[--size] = 0;
+    public void pop() throws EmptyStack {
+        if (isEmpty()) {
+            throw new EmptyStack();
         }
+        elements[--size] = 0;
     }
 
     /**

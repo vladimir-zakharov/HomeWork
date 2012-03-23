@@ -23,10 +23,11 @@ public class LinkedStack implements InterfaceStack {
      *
      */
     @Override
-    public void pop() {
-        if (!isEmpty()) {
-            head = head.next;
+    public void pop() throws EmptyStack {
+        if (isEmpty()) {
+            throw new EmptyStack();
         }
+        head = head.next;
     }
 
     /**

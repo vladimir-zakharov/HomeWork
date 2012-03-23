@@ -7,6 +7,7 @@ package calculate;
 public class Calculator {
 
     /**
+     * constructor for calculator
      * 
      * @param stack 
      */
@@ -23,9 +24,9 @@ public class Calculator {
     public float addition(float first, float second) {
         init(first, second);
         float x = stack.top();
-        stack.pop();
+        popElement();
         float y = stack.top();
-        stack.pop();
+        popElement();
         stack.push(x + y);
         return stack.top();
     }
@@ -39,9 +40,9 @@ public class Calculator {
     public float multiplication(float first, float second) {
         init(first, second);
         float x = stack.top();
-        stack.pop();
+        popElement();
         float y = stack.top();
-        stack.pop();
+        popElement();
         stack.push(x * y);
         return stack.top();
     }
@@ -52,13 +53,18 @@ public class Calculator {
      * @param second
      * @return 
      */
-    private float divison(float first, float second) {
+    public float division(float first, float second) throws DivNull {
         init(first, second);
         float x = stack.top();
-        stack.pop();
+        popElement();
         float y = stack.top();
-        stack.pop();
-        stack.push(x / y);
+        popElement();
+        
+        if (x == 0.0) {
+            throw new DivNull();
+        }
+        
+        stack.push(y / x);
         return stack.top();
     }
 
@@ -68,13 +74,13 @@ public class Calculator {
      * @param second
      * @return 
      */
-    private float deduction(float first, float second) {
+    public float deduction(float first, float second) {
         init(first, second);
         float x = stack.top();
-        stack.pop();
+        popElement();
         float y = stack.top();
-        stack.pop();
-        stack.push(x - y);
+        popElement();
+        stack.push(y - x);
         return stack.top();
     }
 
@@ -86,6 +92,14 @@ public class Calculator {
     private void init(float first, float second) {
         stack.push(first);
         stack.push(second);
+    }
+    
+    private void popElement() {
+        try {
+        stack.pop();
+        } catch(EmptyStack empty) {
+            System.out.println("Stack is empty");
+        }
     }
     
     /**
