@@ -24,7 +24,7 @@ public interface InterfaceHashTable {
     /**
      * @return size of hash table
      */
-    int returnHashSize();
+    int getHashSize();
 
     /**
      * checks existence of the element in the hash table
@@ -32,5 +32,5 @@ public interface InterfaceHashTable {
      * @param string string, which you check for existence
      * @return true if exists; false if not exists
      */
-    boolean isExists(String string);
+    boolean Exists(String string);
 }

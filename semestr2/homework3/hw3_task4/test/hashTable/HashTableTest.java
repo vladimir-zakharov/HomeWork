@@ -21,8 +21,9 @@ public class HashTableTest {
         NewHashFunction newHashFunction = new NewHashFunction();
         HashTable hash = new HashTable(hashFunction);
         hash.addToHash("hello");
-        hash = new HashTable(newHashFunction);
-        hash.addToHash("ololo");
+        assertTrue(hash.Exists("hello"));
+        hash.changeHashFunction(newHashFunction);
+        assertTrue(hash.Exists("hello"));
     }
 
     /**
@@ -35,17 +36,17 @@ public class HashTableTest {
         HashTable hash = new HashTable(hashFunction);
         hash.addToHash("hello");
         hash.addToHash("world");
-        assertTrue(hash.isExists("hello"));
+        assertTrue(hash.Exists("hello"));
         hash.deleteElement("hello");
-        assertFalse(hash.isExists("hello"));
-        assertTrue(hash.isExists("world"));
+        assertFalse(hash.Exists("hello"));
+        assertTrue(hash.Exists("world"));
         hash.deleteElement("world");
-        assertFalse(hash.isExists("world"));
-        hash = new HashTable(newHashFunction);
+        assertFalse(hash.Exists("world"));
+        hash.changeHashFunction(newHashFunction);
         hash.addToHash("ololo");
-        assertTrue(hash.isExists("ololo"));
+        assertTrue(hash.Exists("ololo"));
         hash.deleteElement("ololo");
-        assertFalse(hash.isExists("ololo"));
+        assertFalse(hash.Exists("ololo"));
 
     }
 
@@ -56,8 +57,8 @@ public class HashTableTest {
     public void testReturnHashSize() {
         DefaultHashFunction hashFunction = new DefaultHashFunction();
         HashTable hash = new HashTable(hashFunction);
-        assertEquals(100, hash.returnHashSize());
-        assertFalse(hash.returnHashSize() == 5);
+        assertEquals(100, hash.getHashSize());
+        assertFalse(hash.getHashSize() == 5);
     }
 
     /**
@@ -69,9 +70,9 @@ public class HashTableTest {
         HashTable hash = new HashTable(hashFunction);
         hash.addToHash("hello");
         hash.addToHash("world");
-        assertTrue(hash.isExists("hello"));
-        assertFalse(hash.isExists("test"));
-        assertTrue(hash.isExists("world"));
+        assertTrue(hash.Exists("hello"));
+        assertFalse(hash.Exists("test"));
+        assertTrue(hash.Exists("world"));
     }
 
     public class NewHashFunction implements HashFunctionInterface {

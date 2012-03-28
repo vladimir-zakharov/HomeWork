@@ -5,7 +5,7 @@ package hashTable;
  *
  * @author vladimir-zakharov
  */
-public class HashTable implements InterfaceHashTable {
+public class HashTable {
 
     /**
      * constructor for hash table
@@ -13,8 +13,8 @@ public class HashTable implements InterfaceHashTable {
     public HashTable(HashFunctionInterface hashFunction) {
         for (int i = 0; i < hashSize; ++i) {
             this.buckets[i] = new List();
-            this.hashFunction = hashFunction;
         }
+        this.hashFunction = hashFunction;
     }
 
     /**
@@ -22,7 +22,6 @@ public class HashTable implements InterfaceHashTable {
      *
      * @param string string, which you want to add
      */
-    @Override
     public void addToHash(String string) {
         int index = hashFunction.hashFunction(string, hashSize);
         buckets[index].addToEnd(string);
@@ -33,7 +32,6 @@ public class HashTable implements InterfaceHashTable {
      *
      * @param string string, which you want to delete
      */
-    @Override
     public void deleteElement(String string) {
         int hash = hashFunction.hashFunction(string, hashSize);
         List.ListElement temp = buckets[hash].searchPosition(string);
@@ -49,9 +47,31 @@ public class HashTable implements InterfaceHashTable {
     /**
      * @return size of hash table
      */
-    @Override
-    public int returnHashSize() {
+    public int getHashSize() {
         return hashSize;
+    }
+
+    public void changeHashFunction(HashFunctionInterface newHashFunction) {
+        List[] newBuckets = new List[hashSize];
+      
+        for (int i = 0; i < hashSize; ++i) {
+            newBuckets[i] = new List();
+        }
+
+        for (int i = 0; i < hashSize; ++i) {
+            List.ListElement position = buckets[i].firstPosition();
+            while (position != null) {
+                String currentString = buckets[i].positionValue(position);
+                int index = newHashFunction.hashFunction(currentString, hashSize);
+                newBuckets[index].addToEnd(currentString);
+                List.ListElement temp = position;
+                position = buckets[i].nextPosition(position);
+                buckets[i].deleteElement(temp);
+            }        
+        }
+        
+        System.arraycopy(newBuckets, 0, buckets, 0, hashSize);
+        this.hashFunction = newHashFunction;
     }
 
     /**
@@ -60,17 +80,14 @@ public class HashTable implements InterfaceHashTable {
      * @param string string, which you check for existence
      * @return true if exists; false if not exists
      */
-    @Override
-    public boolean isExists(String string) {
+    public boolean Exists(String string) {
         int hash = hashFunction.hashFunction(string, hashSize);
-        return buckets[hash].isExist(string);
+        return buckets[hash].Exist(string);
     }
-    
     /**
      * size of hash table
      */
     final private int hashSize = 100;
-    
     /**
      * hash table elements
      */

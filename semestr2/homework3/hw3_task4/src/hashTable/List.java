@@ -132,7 +132,7 @@ public class List {
      * @param string string, which you check for existence
      * @return true if exists; false if not exists
      */
-    public boolean isExist(String string) {
+    public boolean Exist(String string) {
         ListElement temp = head;
         boolean successfullSearch = false;
 
