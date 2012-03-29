@@ -12,7 +12,7 @@ public class Calculator {
      *
      * @param stack
      */
-    public Calculator(InterfaceStack stack) {
+    public Calculator(StackInterface stack) {
         this.stack = stack;
     }
 
@@ -23,7 +23,7 @@ public class Calculator {
      * @param second second value
      * @return first + second
      */
-    public float addition(float first, float second) {
+    public float addition(float first, float second) throws EmptyStack {
         init(first, second);
         float x = stack.top();
         popElement();
@@ -40,7 +40,7 @@ public class Calculator {
      * @param second second value
      * @return first * second
      */
-    public float multiplication(float first, float second) {
+    public float multiplication(float first, float second) throws EmptyStack {
         init(first, second);
         float x = stack.top();
         popElement();
@@ -57,7 +57,7 @@ public class Calculator {
      * @param second second value
      * @return first / second
      */
-    public float division(float first, float second) throws DivNull {
+    public float division(float first, float second) throws DivNull, EmptyStack {
         init(first, second);
         float x = stack.top();
         popElement();
@@ -79,7 +79,7 @@ public class Calculator {
      * @param second second value
      * @return first - second
      */
-    public float deduction(float first, float second) {
+    public float deduction(float first, float second) throws EmptyStack {
         init(first, second);
         float x = stack.top();
         popElement();
@@ -103,15 +103,15 @@ public class Calculator {
     /**
      * pop an element from the stack and catch exception
      */
-    private void popElement() {
+    private void popElement() throws EmptyStack {
         try {
             stack.pop();
-        } catch (EmptyStack empty) {
-            System.out.println("Error: Stack is empty");
+        } catch (EmptyStack emptyStack) {
+            throw emptyStack;
         }
     }
     /**
      * the stack of the calculator
      */
-    private InterfaceStack stack;
+    private StackInterface stack;
 }

@@ -5,7 +5,7 @@ package calculate;
  *
  * @author vladimir-zakharov
  */
-public class LinkedStack implements InterfaceStack {
+public class LinkedStack implements StackInterface {
 
     /**
      * push value to the head of the stack
@@ -48,11 +48,7 @@ public class LinkedStack implements InterfaceStack {
      */
     @Override
     public boolean isEmpty() {
-        if (head == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return head == null;
     }
 
     /**

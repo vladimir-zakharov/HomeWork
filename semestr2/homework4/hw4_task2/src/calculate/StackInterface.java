@@ -5,7 +5,7 @@ package calculate;
  *
  * @author vladimir-zakharov;
  */
-public interface InterfaceStack {
+public interface StackInterface {
 
     /**
      * push value to the head of the stack

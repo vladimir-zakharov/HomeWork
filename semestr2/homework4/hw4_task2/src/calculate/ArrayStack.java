@@ -5,7 +5,7 @@ package calculate;
  * 
  * @author vladimir-zakharov
  */
-public class ArrayStack implements InterfaceStack {
+public class ArrayStack implements StackInterface {
 
     /**
      * constructor for array stack
@@ -56,11 +56,7 @@ public class ArrayStack implements InterfaceStack {
      */
     @Override
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return size == 0;
     }
 
     /**
@@ -69,11 +65,7 @@ public class ArrayStack implements InterfaceStack {
      * @return true if stack is full; else false
      */
     private boolean isFull() {
-        if (elements.length == size) {
-            return true;
-        } else {
-            return false;
-        }
+        return elements.length == size;
     }
 
     /**
