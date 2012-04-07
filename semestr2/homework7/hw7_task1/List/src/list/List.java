@@ -19,7 +19,7 @@ public class List<ElementType> {
          * @param next link to next element
          * @param previous link to previous element
          */
-        public ListElement(ElementType value, ListElement<ElementType> next, ListElement<ElementType> previous) {
+        private ListElement(ElementType value, ListElement<ElementType> next, ListElement<ElementType> previous) {
             this.next = next;
             this.previous = previous;
             this.value = value;
