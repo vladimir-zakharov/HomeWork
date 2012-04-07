@@ -10,7 +10,7 @@ public class List<ElementType> {
     /**
      * elements of List
      */
-    public class ListElement<ElementType> {
+    private class ListElement<ElementType> {
 
         /**
          * constructor for ListElement
