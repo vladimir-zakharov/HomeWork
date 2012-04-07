@@ -20,4 +20,6 @@ public interface IListIterator<ElementType> {
     
     void addToHead(ElementType value);
     
+    void addToEnd(ElementType value);
+    
 }

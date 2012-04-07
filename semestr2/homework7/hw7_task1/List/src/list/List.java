@@ -8,28 +8,6 @@ package list;
 public class List<ElementType> {
 
     /**
-     * elements of List
-     */
-    private class ListElement<ElementType> {
-
-        /**
-         * constructor for ListElement
-         *
-         * @param value string, which you init element
-         * @param next link to next element
-         * @param previous link to previous element
-         */
-        private ListElement(ElementType value, ListElement<ElementType> next, ListElement<ElementType> previous) {
-            this.next = next;
-            this.previous = previous;
-            this.value = value;
-        }
-        private ElementType value;
-        private ListElement<ElementType> next;
-        private ListElement<ElementType> previous;
-    }
-
-    /**
      * checks existence of the element in the list
      *
      * @param value value, which you check for existence
@@ -55,6 +33,28 @@ public class List<ElementType> {
      */
     public int amountElements() {
         return count;
+    }
+
+    /**
+     * elements of List
+     */
+    private class ListElement<ElementType> {
+
+        /**
+         * constructor for ListElement
+         *
+         * @param value string, which you init element
+         * @param next link to next element
+         * @param previous link to previous element
+         */
+        private ListElement(ElementType value, ListElement<ElementType> next, ListElement<ElementType> previous) {
+            this.next = next;
+            this.previous = previous;
+            this.value = value;
+        }
+        private ElementType value;
+        private ListElement<ElementType> next;
+        private ListElement<ElementType> previous;
     }
     /**
      * head of list
@@ -153,6 +153,7 @@ public class List<ElementType> {
          *
          * @param value value, which you want to add
          */
+        @Override
         public void addToEnd(ElementType value) {
             if (count == 0) {
                 addFirstElement(value);
@@ -164,17 +165,6 @@ public class List<ElementType> {
             }
         }
 
-        /**
-         * add first element of List
-         */
-        private void addFirstElement(ElementType value) {
-            ListElement<ElementType> newElement = new ListElement<ElementType>(value, null, null);
-            head = newElement;
-            tail = newElement;
-            position = newElement;
-            count = 1;
-        }
-                
         /**
          * add element to head of the list
          *
@@ -191,7 +181,17 @@ public class List<ElementType> {
                 count++;
             }
         }
-        
+
+        /**
+         * add first element of List
+         */
+        private void addFirstElement(ElementType value) {
+            ListElement<ElementType> newElement = new ListElement<ElementType>(value, null, null);
+            head = newElement;
+            tail = newElement;
+            position = newElement;
+            count = 1;
+        }
         private ListElement<ElementType> position;
     }
 }
