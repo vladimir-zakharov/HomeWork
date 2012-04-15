@@ -6,6 +6,77 @@ package list;
  * @author vladimir-zakharov
  */
 public class List<ElementType> {
+    
+        /**
+         * insert element into list behind index position
+         *
+         * @param index
+         * @param value value, which you want to add
+         * @throws ListIndexOutOfBoundsException 
+         */
+        public void insert(int index, ElementType value) throws ListIndexOutOfBoundsException {
+            if (index > size - 1) {
+                throw new ListIndexOutOfBoundsException();
+            }
+            
+            if (size == 0) {
+                addFirstElement(value);
+            } else if (index == size - 1) {
+                addToEnd(value);
+            } else {
+                ListElement<ElementType> temp = head;
+                
+                for (int i = 0; i < index; ++i) {
+                    temp = temp.next;
+                }
+                ListElement<ElementType> newElement = new ListElement<ElementType>(value, temp.next, temp);
+                temp.next.previous = newElement;
+                temp.next = newElement;
+                size++;
+            }
+        }
+
+        /**
+         * add element to tail of the list
+         *
+         * @param value value, which you want to add
+         */
+        public void addToEnd(ElementType value) {
+            if (size == 0) {
+                addFirstElement(value);
+            } else {
+                ListElement<ElementType> newElement = new ListElement<ElementType>(value, null, tail);
+                tail.next = newElement;
+                tail = newElement;
+                size++;
+            }
+        }
+
+        /**
+         * add element to head of the list
+         *
+         * @param value value, which you want to add
+         */
+        public void addToHead(ElementType value) {
+            if (size == 0) {
+                addFirstElement(value);
+            } else {
+                ListElement<ElementType> newElement = new ListElement<ElementType>(value, head, null);
+                head.previous = newElement;
+                head = newElement;
+                size++;
+            }
+        }
+
+        /**
+         * add first element of List
+         */
+        private void addFirstElement(ElementType value) {
+            ListElement<ElementType> newElement = new ListElement<ElementType>(value, null, null);
+            head = newElement;
+            tail = newElement;
+            size = 1;
+        }
 
     /**
      * checks existence of the element in the list
@@ -32,7 +103,7 @@ public class List<ElementType> {
      * @return number of elements
      */
     public int amountElements() {
-        return count;
+        return size;
     }
 
     /**
@@ -43,7 +114,7 @@ public class List<ElementType> {
         /**
          * constructor for ListElement
          *
-         * @param value string, which you init element
+         * @param value value, which you init element
          * @param next link to next element
          * @param previous link to previous element
          */
@@ -67,7 +138,7 @@ public class List<ElementType> {
     /**
      * number of elements
      */
-    private int count;
+    private int size;
 
     public IListIterator<ElementType> listIterator() {
         return new ListIterator();
@@ -80,25 +151,26 @@ public class List<ElementType> {
         }
 
         @Override
-        public ElementType next() throws NoElementsException {
+        public void next() throws NoElementsException {
             if (!hasNext()) {
                 throw new NoElementsException();
             }
 
-            ListElement<ElementType> temp = position;
             position = position.next;
-            return temp.value;
         }
 
         @Override
-        public ElementType previous() throws NoElementsException {
+        public void previous() throws NoElementsException {
             if (!hasPrevious()) {
                 throw new NoElementsException();
             }
 
-            ListElement<ElementType> temp = position;
             position = position.previous;
-            return temp.value;
+        }
+        
+        @Override
+        public ElementType currentItem() {
+            return position.value;
         }
 
         @Override
@@ -112,86 +184,31 @@ public class List<ElementType> {
         }
 
         @Override
-        public void deleteElement() {
-            if (count == 1) {
+        public void deleteElement() throws NoElementsException {
+            if (position == null) {
+               throw new NoElementsException();
+            }
+            
+            if (size == 1) {
                 head = null;
                 tail = null;
+                position = null;
             } else if (position == head) {
                 position.next.previous = null;
                 head = position.next;
+                position = position.next;
             } else if (position == tail) {
                 position.previous.next = null;
                 tail = position.previous;
+                position = position.previous;
             } else {
                 position.previous.next = position.next;
                 position.next.previous = position.previous;
+                position = position.next;
             }
-            count--;
+            size--;
         }
 
-        /**
-         * insert element into list behind current position
-         *
-         * @param value value, which you want to add
-         */
-        @Override
-        public void insert(ElementType value) {
-            if (count == 0) {
-                addFirstElement(value);
-            } else if (position == tail) {
-                addToEnd(value);
-            } else {
-                ListElement<ElementType> newElement = new ListElement<ElementType>(value, position.next, position);
-                position.next.previous = newElement;
-                position.next = newElement;
-                count++;
-            }
-        }
-
-        /**
-         * add element to tail of the list
-         *
-         * @param value value, which you want to add
-         */
-        @Override
-        public void addToEnd(ElementType value) {
-            if (count == 0) {
-                addFirstElement(value);
-            } else {
-                ListElement<ElementType> newElement = new ListElement<ElementType>(value, null, tail);
-                tail.next = newElement;
-                tail = newElement;
-                count++;
-            }
-        }
-
-        /**
-         * add element to head of the list
-         *
-         * @param value value, which you want to add
-         */
-        @Override
-        public void addToHead(ElementType value) {
-            if (count == 0) {
-                addFirstElement(value);
-            } else {
-                ListElement<ElementType> newElement = new ListElement<ElementType>(value, head, null);
-                head.previous = newElement;
-                head = newElement;
-                count++;
-            }
-        }
-
-        /**
-         * add first element of List
-         */
-        private void addFirstElement(ElementType value) {
-            ListElement<ElementType> newElement = new ListElement<ElementType>(value, null, null);
-            head = newElement;
-            tail = newElement;
-            position = newElement;
-            count = 1;
-        }
         private ListElement<ElementType> position;
     }
 }
