@@ -55,10 +55,10 @@ public class Clock extends JFrame {
         int[] xSecond = {1, -1, -1, -3, 0, 3, 1};
         int[] ySecond = {3, 3, -80, -80, -85, -80, -80};
 
-        painter2D.rotate(Math.PI * (6.0 * (hour + minute / 60) / 180));
+        painter2D.rotate(Math.PI * (30.0 * (hour + minute / 60) / 180));
         painter2D.setColor(Color.red);
         painter2D.fillPolygon(xHour, yHour, 7);
-        painter2D.rotate(-Math.PI * (6.0 * (hour + minute / 60) / 180));
+        painter2D.rotate(-Math.PI * (30.0 * (hour + minute / 60) / 180));
 
         painter2D.rotate(Math.PI * (6.0 * (minute + second / 60) / 180));
         Color darkGreen = new Color(0, 150, 0);
