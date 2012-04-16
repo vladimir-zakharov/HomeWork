@@ -86,6 +86,7 @@ public class Set<ElementType> {
      * @param set this is another set
      * @return intersected set
      * @throws ExistException This Exception will be trown if an element already
+     * exists in the set
      */
     public Set<ElementType> intersection(Set<ElementType> set) throws ExistException {
         Set<ElementType> resultSet = new Set<ElementType>();
@@ -112,6 +113,7 @@ public class Set<ElementType> {
      * @param set this is another set
      * @return united set
      * @throws ExistException This Exception will be trown if an element already
+     * exists in the set
      */
     public Set<ElementType> union(Set<ElementType> set) throws ExistException {
         Set<ElementType> resultSet = new Set<ElementType>();
