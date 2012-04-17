@@ -37,17 +37,14 @@ public class Set<ElementType> {
      * adds element to the set
      *
      * @param value value, which you want to add
-     * @throws ExistException This Exception will be trown if an element already
-     * exists in the set
      */
-    public void addElement(ElementType value) throws ExistException {
+    public void addElement(ElementType value) {
         if (Exist(value)) {
-            throw new ExistException();
+            return;
         }
 
         SetElement newElement = new SetElement(value, head);
         head = newElement;
-
     }
 
     /**
@@ -82,24 +79,18 @@ public class Set<ElementType> {
 
     /**
      * intersects the set with another set
-     * 
+     *
      * @param set this is another set
      * @return intersected set
-     * @throws ExistException This Exception will be trown if an element already
-     * exists in the set
      */
-    public Set<ElementType> intersection(Set<ElementType> set) throws ExistException {
+    public Set<ElementType> intersection(Set<ElementType> set) {
         Set<ElementType> resultSet = new Set<ElementType>();
 
         SetElement temp = head;
 
         while (temp != null) {
             if (set.Exist(temp.value)) {
-                try {
-                    resultSet.addElement(temp.value);
-                } catch (ExistException existException) {
-                    throw existException;
-                }
+                resultSet.addElement(temp.value);
             }
             temp = temp.next;
         }
@@ -109,36 +100,24 @@ public class Set<ElementType> {
 
     /**
      * unites the set with another set
-     * 
+     *
      * @param set this is another set
      * @return united set
-     * @throws ExistException This Exception will be trown if an element already
-     * exists in the set
      */
-    public Set<ElementType> union(Set<ElementType> set) throws ExistException {
+    public Set<ElementType> union(Set<ElementType> set) {
         Set<ElementType> resultSet = new Set<ElementType>();
 
         SetElement temp = head;
 
         while (temp != null) {
-            try {
-                resultSet.addElement(temp.value);
-            } catch (ExistException existException) {
-                throw existException;
-            }
-
+            resultSet.addElement(temp.value);
             temp = temp.next;
         }
 
         temp = set.head;
 
         while (temp != null) {
-            try {
-                resultSet.addElement(temp.value);
-            } catch (ExistException existException) {
-                throw existException;
-            }
-
+            resultSet.addElement(temp.value);
             temp = temp.next;
         }
 

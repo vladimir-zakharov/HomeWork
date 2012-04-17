@@ -17,8 +17,8 @@ public class SetTest {
     /**
      * Test of addElement method, of class Set.
      */
-    @Test(expected = ExistException.class)
-    public void testAddElement() throws Exception {
+    @Test
+    public void testAddElement() {
         Set<Integer> set = new Set<Integer>();
         set.addElement(10);
         set.addElement(124);
@@ -30,7 +30,7 @@ public class SetTest {
      * Test of Exist method, of class Set.
      */
     @Test
-    public void testExist() throws Exception {
+    public void testExist() {
         Set<Integer> set = new Set<Integer>();
         set.addElement(10);
         set.addElement(124);
@@ -63,7 +63,7 @@ public class SetTest {
      * Test of intersection method, of class Set.
      */
     @Test
-    public void testIntersection() throws Exception {
+    public void testIntersection() {
         Set<Integer> firstSet = new Set<Integer>();
         Set<Integer> secondSet = new Set<Integer>();
 
@@ -84,8 +84,8 @@ public class SetTest {
     /**
      * Test of union method, of class Set.
      */
-    @Test(expected = ExistException.class)
-    public void testUnion() throws Exception {
+    @Test
+    public void testUnion() {
         Set<Integer> firstSet = new Set<Integer>();
         Set<Integer> secondSet = new Set<Integer>();
 
