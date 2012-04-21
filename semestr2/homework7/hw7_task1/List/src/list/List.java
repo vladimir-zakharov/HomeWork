@@ -72,16 +72,6 @@ public class List<ElementType> implements Iterable<ElementType> {
     }
 
     /**
-     * add first element of List
-     */
-    private void addFirstElement(ElementType value) {
-        ListElement newElement = new ListElement(value, null, null);
-        head = newElement;
-        tail = newElement;
-        size = 1;
-    }
-
-    /**
      * checks existence of the element in the list
      *
      * @param value value, which you check for existence
@@ -106,40 +96,6 @@ public class List<ElementType> implements Iterable<ElementType> {
     public int amountElements() {
         return size;
     }
-
-    /**
-     * elements of List
-     */
-    private class ListElement {
-
-        /**
-         * constructor for ListElement
-         *
-         * @param value value, which you init element
-         * @param next link to next element
-         * @param previous link to previous element
-         */
-        private ListElement(ElementType value, ListElement next, ListElement previous) {
-            this.next = next;
-            this.previous = previous;
-            this.value = value;
-        }
-        private ElementType value;
-        private ListElement next;
-        private ListElement previous;
-    }
-    /**
-     * head of list
-     */
-    private ListElement head;
-    /**
-     * tail of list
-     */
-    private ListElement tail;
-    /**
-     * number of elements
-     */
-    private int size;
 
     @Override
     public ListIterator<ElementType> iterator() {
@@ -265,6 +221,50 @@ public class List<ElementType> implements Iterable<ElementType> {
          */
         private int index;
     }
+
+    /**
+     * add first element of List
+     */
+    private void addFirstElement(ElementType value) {
+        ListElement newElement = new ListElement(value, null, null);
+        head = newElement;
+        tail = newElement;
+        size = 1;
+    }
+
+    /**
+     * elements of List
+     */
+    private class ListElement {
+
+        /**
+         * constructor for ListElement
+         *
+         * @param value value, which you init element
+         * @param next link to next element
+         * @param previous link to previous element
+         */
+        private ListElement(ElementType value, ListElement next, ListElement previous) {
+            this.next = next;
+            this.previous = previous;
+            this.value = value;
+        }
+        private ElementType value;
+        private ListElement next;
+        private ListElement previous;
+    }
+    /**
+     * head of list
+     */
+    private ListElement head;
+    /**
+     * tail of list
+     */
+    private ListElement tail;
+    /**
+     * number of elements
+     */
+    private int size;
 
     public static void main(String[] argv) {
         List<Integer> list = new List<Integer>();
