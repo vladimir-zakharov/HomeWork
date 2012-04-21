@@ -160,8 +160,11 @@ public class List<ElementType> implements Iterable<ElementType> {
         }
 
         /**
-         * 
-         * @return 
+         * Returns the current element value and advances the cursor to next
+         * position.
+         *
+         * @return the current element value
+         * @throws NoSuchElementException if the iteration has no next element
          */
         @Override
         public ElementType next() {
@@ -182,8 +185,12 @@ public class List<ElementType> implements Iterable<ElementType> {
         }
 
         /**
-         * 
-         * @return 
+         * Returns the current element value and advances the cursor to previous
+         * position.
+         *
+         * @return the current element value
+         * @throws NoSuchElementException if the iteration has no previous
+         * element
          */
         @Override
         public ElementType previous() {
@@ -204,8 +211,7 @@ public class List<ElementType> implements Iterable<ElementType> {
         }
 
         /**
-         * 
-         * @return 
+         * @return true if the list iterator has next element; else false
          */
         @Override
         public boolean hasNext() {
@@ -213,8 +219,7 @@ public class List<ElementType> implements Iterable<ElementType> {
         }
 
         /**
-         * 
-         * @return 
+         * @return true if the list iterator has previous element; else false
          */
         @Override
         public boolean hasPrevious() {
@@ -222,7 +227,7 @@ public class List<ElementType> implements Iterable<ElementType> {
         }
 
         /**
-         * 
+         * delete current element
          */
         @Override
         public void remove() {
@@ -252,11 +257,11 @@ public class List<ElementType> implements Iterable<ElementType> {
             size--;
         }
         /**
-         * 
+         * current cursor position
          */
         private ListElement position;
         /**
-         * 
+         * current index position
          */
         private int index;
     }
