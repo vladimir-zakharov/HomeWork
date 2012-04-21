@@ -1,82 +1,85 @@
 package list;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * use to create a List
  *
  * @author vladimir-zakharov
  */
-public class List<ElementType> {
-    
-        /**
-         * insert element into list behind index position
-         *
-         * @param index
-         * @param value value, which you want to add
-         * @throws ListIndexOutOfBoundsException 
-         */
-        public void insert(int index, ElementType value) throws ListIndexOutOfBoundsException {
-            if (index > size - 1) {
-                throw new ListIndexOutOfBoundsException();
-            }
-            
-            if (size == 0) {
-                addFirstElement(value);
-            } else if (index == size - 1) {
-                addToEnd(value);
-            } else {
-                ListElement<ElementType> temp = head;
-                
-                for (int i = 0; i < index; ++i) {
-                    temp = temp.next;
-                }
-                ListElement<ElementType> newElement = new ListElement<ElementType>(value, temp.next, temp);
-                temp.next.previous = newElement;
-                temp.next = newElement;
-                size++;
-            }
+public class List<ElementType> implements Iterable<ElementType> {
+
+    /**
+     * insert element into list behind index position
+     *
+     * @param index
+     * @param value value, which you want to add
+     * @throws ListIndexOutOfBoundsException
+     */
+    public void insert(int index, ElementType value) {
+        if (index > size - 1) {
+            throw new ListIndexOutOfBoundsException();
         }
 
-        /**
-         * add element to tail of the list
-         *
-         * @param value value, which you want to add
-         */
-        public void addToEnd(ElementType value) {
-            if (size == 0) {
-                addFirstElement(value);
-            } else {
-                ListElement<ElementType> newElement = new ListElement<ElementType>(value, null, tail);
-                tail.next = newElement;
-                tail = newElement;
-                size++;
-            }
-        }
+        if (size == 0) {
+            addFirstElement(value);
+        } else if (index == size - 1) {
+            addToEnd(value);
+        } else {
+            ListElement temp = head;
 
-        /**
-         * add element to head of the list
-         *
-         * @param value value, which you want to add
-         */
-        public void addToHead(ElementType value) {
-            if (size == 0) {
-                addFirstElement(value);
-            } else {
-                ListElement<ElementType> newElement = new ListElement<ElementType>(value, head, null);
-                head.previous = newElement;
-                head = newElement;
-                size++;
+            for (int i = 0; i < index; ++i) {
+                temp = temp.next;
             }
+            ListElement newElement = new ListElement(value, temp.next, temp);
+            temp.next.previous = newElement;
+            temp.next = newElement;
+            size++;
         }
+    }
 
-        /**
-         * add first element of List
-         */
-        private void addFirstElement(ElementType value) {
-            ListElement<ElementType> newElement = new ListElement<ElementType>(value, null, null);
-            head = newElement;
+    /**
+     * add element to tail of the list
+     *
+     * @param value value, which you want to add
+     */
+    public void addToEnd(ElementType value) {
+        if (size == 0) {
+            addFirstElement(value);
+        } else {
+            ListElement newElement = new ListElement(value, null, tail);
+            tail.next = newElement;
             tail = newElement;
-            size = 1;
+            size++;
         }
+    }
+
+    /**
+     * add element to head of the list
+     *
+     * @param value value, which you want to add
+     */
+    public void addToHead(ElementType value) {
+        if (size == 0) {
+            addFirstElement(value);
+        } else {
+            ListElement newElement = new ListElement(value, head, null);
+            head.previous = newElement;
+            head = newElement;
+            size++;
+        }
+    }
+
+    /**
+     * add first element of List
+     */
+    private void addFirstElement(ElementType value) {
+        ListElement newElement = new ListElement(value, null, null);
+        head = newElement;
+        tail = newElement;
+        size = 1;
+    }
 
     /**
      * checks existence of the element in the list
@@ -84,19 +87,17 @@ public class List<ElementType> {
      * @param value value, which you check for existence
      * @return true if exists; false if not exists
      */
-    public boolean Exist(ElementType value) {
-        ListElement<ElementType> temp = head;
-        boolean successfullSearch = false;
+    public boolean exist(ElementType value) {
+        ListElement temp = head;
 
         while (temp != null) {
             if (temp.value.equals(value)) {
-                successfullSearch = true;
-                break;
+                return true;
             }
             temp = temp.next;
         }
 
-        return successfullSearch;
+        return false;
     }
 
     /**
@@ -109,7 +110,7 @@ public class List<ElementType> {
     /**
      * elements of List
      */
-    private class ListElement<ElementType> {
+    private class ListElement {
 
         /**
          * constructor for ListElement
@@ -118,81 +119,122 @@ public class List<ElementType> {
          * @param next link to next element
          * @param previous link to previous element
          */
-        private ListElement(ElementType value, ListElement<ElementType> next, ListElement<ElementType> previous) {
+        private ListElement(ElementType value, ListElement next, ListElement previous) {
             this.next = next;
             this.previous = previous;
             this.value = value;
         }
         private ElementType value;
-        private ListElement<ElementType> next;
-        private ListElement<ElementType> previous;
+        private ListElement next;
+        private ListElement previous;
     }
     /**
      * head of list
      */
-    private ListElement<ElementType> head;
+    private ListElement head;
     /**
      * tail of list
      */
-    private ListElement<ElementType> tail;
+    private ListElement tail;
     /**
      * number of elements
      */
     private int size;
 
-    public IListIterator<ElementType> listIterator() {
-        return new ListIterator();
+    @Override
+    public ListIterator<ElementType> iterator() {
+        return new ListIter();
     }
 
-    public class ListIterator implements IListIterator<ElementType> {
+    /**
+     * Iterator of the list
+     */
+    public class ListIter implements ListIterator<ElementType> {
 
-        public ListIterator() {
+        /**
+         * constructor for ListIter
+         */
+        public ListIter() {
             this.position = head;
+            this.index = 1;
         }
 
+        /**
+         * 
+         * @return 
+         */
         @Override
-        public void next() throws NoElementsException {
+        public ElementType next() {
             if (!hasNext()) {
-                throw new NoElementsException();
+                throw new NoSuchElementException();
             }
 
-            position = position.next;
+            if (index < 1) {
+                position = head;
+                index++;
+                return null;
+            } else {
+                ListElement temp = position;
+                position = position.next;
+                index++;
+                return temp.value;
+            }
         }
 
+        /**
+         * 
+         * @return 
+         */
         @Override
-        public void previous() throws NoElementsException {
+        public ElementType previous() {
             if (!hasPrevious()) {
-                throw new NoElementsException();
+                throw new NoSuchElementException();
             }
 
-            position = position.previous;
-        }
-        
-        @Override
-        public ElementType currentItem() {
-            return position.value;
+            if (index > size) {
+                position = tail;
+                index--;
+                return null;
+            } else {
+                ListElement temp = position;
+                position = position.previous;
+                index--;
+                return temp.value;
+            }
         }
 
+        /**
+         * 
+         * @return 
+         */
         @Override
         public boolean hasNext() {
-            return position.next != null;
+            return index < size + 1;
         }
 
+        /**
+         * 
+         * @return 
+         */
         @Override
         public boolean hasPrevious() {
-            return position.previous != null;
+            return index > 0;
         }
 
+        /**
+         * 
+         */
         @Override
-        public void deleteElement() throws NoElementsException {
+        public void remove() {
             if (position == null) {
-               throw new NoElementsException();
+                throw new IllegalStateException();
             }
-            
+
             if (size == 1) {
                 head = null;
                 tail = null;
                 position = null;
+                index = 0;
             } else if (position == head) {
                 position.next.previous = null;
                 head = position.next;
@@ -201,6 +243,7 @@ public class List<ElementType> {
                 position.previous.next = null;
                 tail = position.previous;
                 position = position.previous;
+                index--;
             } else {
                 position.previous.next = position.next;
                 position.next.previous = position.previous;
@@ -208,7 +251,26 @@ public class List<ElementType> {
             }
             size--;
         }
+        /**
+         * 
+         */
+        private ListElement position;
+        /**
+         * 
+         */
+        private int index;
+    }
 
-        private ListElement<ElementType> position;
+    public static void main(String[] argv) {
+        List<Integer> list = new List<Integer>();
+        list.addToHead(15);
+        list.insert(0, 5);
+        list.insert(0, 10);
+        list.insert(1, 20);
+        ListIterator<Integer> iterator = list.iterator();
+
+        for (Integer i : list) {
+            System.out.println(i);
+        }
     }
 }
