@@ -92,4 +92,26 @@ public class ListIteratorTest {
         iterator.remove();
         assertFalse(list.exist(15));
     }
+
+     /**
+     * Test foreach.
+     */
+    @Test
+    public void testForeach() {
+        List<Integer> list = new List<Integer>();
+        list.addToHead(15);
+        list.addToHead(10);
+        list.addToHead(20);
+        list.addToHead(25);
+        ListIterator<Integer> iter = list.iterator();
+        int count = 0;
+        
+        for (Integer i : list) {
+            assertEquals(iter.next(), i);
+            count++;
+        }
+        
+        assertEquals(count, list.amountElements());
+    }
+    
 }
