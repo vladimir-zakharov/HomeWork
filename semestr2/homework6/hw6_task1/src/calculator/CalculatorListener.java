@@ -97,12 +97,6 @@ public class CalculatorListener implements ActionListener {
                             calc.setText("" + currentResult);
                         }
                         break;
-                    case ' ':
-                        break;
-                    default:
-                        String clickedButtonLabel = clickedButton.getText();
-                        calc.setText(dispFieldText + clickedButtonLabel);
-                        break;
                 }
                 break;
             default:
