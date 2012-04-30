@@ -24,8 +24,6 @@ public class Calculator extends JFrame {
         BorderLayout borderLayout = new BorderLayout();
         setLayout(borderLayout);
         add("North", displayField);
-        setLayout(borderLayout);
-        add("North", displayField);
 
         JPanel mainPanel = new JPanel();
         GridLayout gridLayout = new GridLayout(5, 4);
