@@ -69,6 +69,7 @@ public class CalculatorListener implements ActionListener {
                 calc.setText("");
                 break;
             case 'C':
+                selectedAction = ' ';
                 currentResult = 0;
                 calc.setText("");
                 break;
@@ -106,6 +107,6 @@ public class CalculatorListener implements ActionListener {
         }
     }
     private Calculator calc;
-    private char selectedAction = ' ';
+    private char selectedAction;
     private double currentResult;
 }
