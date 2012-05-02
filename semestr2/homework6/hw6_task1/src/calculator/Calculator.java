@@ -53,28 +53,29 @@ public class Calculator extends JFrame {
 
         add("Center", mainPanel);
 
-        CalculatorListener calcListener = new CalculatorListener(this);
-        button0.addActionListener(calcListener);
-        button1.addActionListener(calcListener);
-        button2.addActionListener(calcListener);
-        button3.addActionListener(calcListener);
-        button4.addActionListener(calcListener);
-        button5.addActionListener(calcListener);
-        button6.addActionListener(calcListener);
-        button7.addActionListener(calcListener);
-        button8.addActionListener(calcListener);
-        button9.addActionListener(calcListener);
-        buttonPoint.addActionListener(calcListener);
-        buttonPlus.addActionListener(calcListener);
-        buttonMinus.addActionListener(calcListener);
-        buttonDivide.addActionListener(calcListener);
-        buttonMultiply.addActionListener(calcListener);
-        buttonEqual.addActionListener(calcListener);
-        buttonClear.addActionListener(calcListener);
+        NumberListener numbListener = new NumberListener(this);
+        OperationListener operListener = new OperationListener(this);
+        button0.addActionListener(numbListener);
+        button1.addActionListener(numbListener);
+        button2.addActionListener(numbListener);
+        button3.addActionListener(numbListener);
+        button4.addActionListener(numbListener);
+        button5.addActionListener(numbListener);
+        button6.addActionListener(numbListener);
+        button7.addActionListener(numbListener);
+        button8.addActionListener(numbListener);
+        button9.addActionListener(numbListener);
+        buttonPoint.addActionListener(numbListener);
+        buttonPlus.addActionListener(operListener);
+        buttonMinus.addActionListener(operListener);
+        buttonDivide.addActionListener(operListener);
+        buttonMultiply.addActionListener(operListener);
+        buttonEqual.addActionListener(operListener);
+        buttonClear.addActionListener(operListener);
     }
 
     public void setText(String text) {
-        displayField.setText(text);
+        this.displayField.setText(text);
     }
 
     public String getText() {
