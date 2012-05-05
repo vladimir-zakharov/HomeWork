@@ -3,11 +3,17 @@ package arithmeticTree;
 import java.io.*;
 
 /**
- *
+ * class ArithmeticTree
+ * 
  * @author vladimir-zakharov
  */
 public class ArithmeticTree {
 
+    /**
+     * cpnstructor for class ArithmeticTree
+     * 
+     * @param file file for initiate tree
+     */
     public ArithmeticTree(File file) {
         String string = "";
         BufferedReader input;
@@ -19,10 +25,18 @@ public class ArithmeticTree {
         init(string, head, 0);
     }
 
+    /**
+     * prints tree
+     */
     public void print() {
         head.print();
     }
 
+    /**
+     * calculates tree
+     * 
+     * @return result of calculation
+     */
     public int calculate() {
         return head.calculate();
     }

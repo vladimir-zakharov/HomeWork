@@ -9,7 +9,7 @@ public class Deduction implements TreeElement {
     @Override
     public void print() {
         System.out.print('(');
-        System.out.print("* ");
+        System.out.print("- ");
         left.print();
         right.print();
         System.out.print(')');
