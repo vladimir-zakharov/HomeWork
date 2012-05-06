@@ -1,0 +1,36 @@
+1) MyPriorityQueue<int> intQueue = new MyPriorityQueue<int>();
+нельзя использовать тип int
+
+2) Немного изменен вывод.
+
+3) ListElement изменен на QueueElement
+
+4) Создано свое исключение EmptyQueueException, но нигде не используется
+В dequeue вместо throw new RuntimeException("Queue is empty!!!");
+нужно использовать EmptyQueueException
+
+5) В самом начале написано:
+// High priority items have low 'prio' value, i.e. ("str1", 0) > ("str2", 1)
+но в программе добавляется наоборот: l.getNext().getPrio() > prio
+нужно заменить на l.getNext().getPrio() <= prio
+
+6) if (head == null)
+            throw new EmptyQueueException("Queue is empty!!!");
+
+Из того, что head == null не следует, что очередь пуста, т.к. head - это стражник.
+Нужно поставить условие head.getNext() == null
+
+7) В testEnqueueDequeueInteger используются 2 одинаковых значения,
+может сработать даже при неправильном удалении.
+
+8) В testEnqueueDequeueString() элемент, который добавлен позже, должен стоять
+после элемента, добавленного раньше
+
+9) Убираем try - catch конструкцию в тесте. 
+Заменяем на @Test(expected = EmptyQueueException.class)
+
+10) В тестах удалено System.out.println("queue")
+
+11) Отформатированы все файлы.
+
+12) Добавлены javadoc комментарии
