@@ -4,7 +4,7 @@ package arithmeticTree;
  *
  * @author vladimir-zakharov
  */
-public class Number implements TreeElement {
+public class Number extends TreeElement {
     
     public Number(String string) {
         this.number = string;

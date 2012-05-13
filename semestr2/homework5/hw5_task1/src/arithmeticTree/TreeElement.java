@@ -1,16 +1,16 @@
 package arithmeticTree;
 
 /**
- * interface of tree element
+ * abstract class TreeElement
  *
  * @author vladimir-zakharov
  */
-public interface TreeElement {
+public abstract class TreeElement {
 
     /**
      * prints element
      */
-    void print();
+    abstract void print();
 
     /**
      * calculates element
@@ -18,33 +18,33 @@ public interface TreeElement {
      * @return number, if element is number; result of the operation if element
      * is operation
      */
-    int calculate();
+    abstract int calculate();
 
     /**
      * add left child to element
      *
      * @param left element, which you want to add
      */
-    void setLeft(TreeElement left);
+    abstract void setLeft(TreeElement left);
 
     /**
      * return left child
      *
      * @return left child
      */
-    TreeElement getLeft();
+    abstract TreeElement getLeft();
 
     /**
      * add right child to element
      *
      * @param right element, which you want to add
      */
-    void setRight(TreeElement right);
+    abstract void setRight(TreeElement right);
 
     /**
      * returns right child
      *
      * @return right child
      */
-    TreeElement getRight();
+    abstract TreeElement getRight();
 }
