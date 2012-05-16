@@ -25,26 +25,32 @@ public abstract class TreeElement {
      *
      * @param left element, which you want to add
      */
-    abstract void setLeft(TreeElement left);
+    void setLeft(TreeElement left) {
+    }
 
     /**
      * return left child
      *
      * @return left child
      */
-    abstract TreeElement getLeft();
+    TreeElement getLeft() {
+        return null;
+    }
 
     /**
      * add right child to element
      *
      * @param right element, which you want to add
      */
-    abstract void setRight(TreeElement right);
+    void setRight(TreeElement right) {
+    }
 
     /**
      * returns right child
      *
      * @return right child
      */
-    abstract TreeElement getRight();
+    TreeElement getRight() {
+        return null;
+    }
 }
