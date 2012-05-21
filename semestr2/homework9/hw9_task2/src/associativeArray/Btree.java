@@ -192,6 +192,8 @@ public class Btree<Type> {
                 }
                 if (root.elements.isEmpty()) {
                     root = root.children.get(0);
+                    root.setParent(null);
+                    root.setIndexParent(-1);
                 }
             }
         } else {
