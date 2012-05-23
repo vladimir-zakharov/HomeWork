@@ -174,7 +174,13 @@ public class Btree<Type> {
             while (i < node.elements.size() && key > node.elements.get(i).key) {
                 ++i;
             }
-            node.elements.add(i, new Element(key, value));
+            if (i > node.elements.size() - 1) {
+                node.elements.add(new Element(key, value));
+            } else {
+                if (node.elements.get(i).key != key) {
+                    node.elements.add(i, new Element(key, value));
+                }
+            }
         }
     }
 

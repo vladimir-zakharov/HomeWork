@@ -13,7 +13,7 @@ public class NotFoundElementException extends Exception {
     public NotFoundElementException() {
         super();
     }
-    
+
     public NotFoundElementException(String msg) {
         super(msg);
     }

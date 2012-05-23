@@ -29,6 +29,18 @@ public class BtreeTest {
     }
 
     /**
+     * Test of insert method, of class Btree.
+     */
+    @Test(expected = NotFoundElementException.class)
+    public void testInsertAlredyExists() throws Exception {
+        Btree<Integer> bTree = new Btree<Integer>();
+        bTree.insert(10, 15);
+        bTree.insert(10, 20);
+        bTree.remove(10);
+        bTree.remove(10);
+    }
+
+    /**
      * Test of remove method, of class Btree.
      */
     @Test(expected = NotFoundElementException.class)
