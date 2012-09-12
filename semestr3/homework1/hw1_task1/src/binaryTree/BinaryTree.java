@@ -28,12 +28,14 @@ public class BinaryTree {
                 if (temp.getValue() < value) {
                     if (temp.getRight() == null) {
                         temp.setRight(new TreeElement(value, null, null));
+                        break;
                     } else {
                         temp = temp.getRight();
                     }
                 } else if (temp.getValue() > value) {
                     if (temp.getLeft() == null) {
                         temp.setLeft(new TreeElement(value, null, null));
+                        break;
                     } else {
                         temp = temp.getLeft();
                     }
