@@ -10,7 +10,7 @@ public class BinaryTree {
      * prints all elements
      */
     public void print() {
-        head.print();
+        root.print();
     }
     
     /**
@@ -19,10 +19,10 @@ public class BinaryTree {
      * @param value value, which you want to add
      */
     public void addValue(int value) {
-        if (head == null) {
-            head = new TreeElement(value, null, null);
+        if (root == null) {
+            root = new TreeElement(value, null, null);
         } else {
-            TreeElement temp = head;
+            TreeElement temp = root;
             
             while(temp != null) {
                 if (temp.getValue() < value) {
@@ -46,8 +46,16 @@ public class BinaryTree {
         }     
     }
     
+    public TreeElement getRoot() {
+        return root;
+    }
+    
+    public PreorderIterator iterator() {
+        return new PreorderIterator(this);
+    }
+    
     /**
      * head of the tree
      */
-    private TreeElement head;
+    private TreeElement root;
 }

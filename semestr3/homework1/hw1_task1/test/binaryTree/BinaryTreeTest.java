@@ -10,6 +10,20 @@ import static org.junit.Assert.*;
 public class BinaryTreeTest {
 
     /**
+     * Test of addValue method, of class BinaryTree.
+     */
+    @Test
+    public void testAddValue() {
+        BinaryTree tree = new BinaryTree();
+        tree.addValue(10);
+        tree.addValue(7);
+        tree.addValue(9);
+        tree.addValue(5);
+        tree.addValue(15);
+        tree.addValue(20);
+    }
+    
+    /**
      * Test of print method, of class BinaryTree.
      */
     @Test
@@ -25,10 +39,10 @@ public class BinaryTreeTest {
     }
 
     /**
-     * Test of addValue method, of class BinaryTree.
+     * Test of getRoot method, of class BinaryTree.
      */
     @Test
-    public void testAddValue() {
+    public void testGetRoot() {
         BinaryTree tree = new BinaryTree();
         tree.addValue(10);
         tree.addValue(7);
@@ -36,5 +50,15 @@ public class BinaryTreeTest {
         tree.addValue(5);
         tree.addValue(15);
         tree.addValue(20);
+        assertEquals(tree.getRoot().getValue(), 10);
+    }
+
+    /**
+     * Test of iterator method, of class BinaryTree.
+     */
+    @Test
+    public void testIterator() {
+        BinaryTree tree = new BinaryTree();
+        PreorderIterator iter = tree.iterator();
     }
 }
