@@ -13,7 +13,7 @@ public class PreorderIterator {
     /**
      * constructor for PreorderIterator
      * 
-     * @param tree for this tree you create an iterator
+     * @param tree for this tree you will create an iterator
      */
     PreorderIterator(BinaryTree tree) {
         node = tree.getRoot();
@@ -25,7 +25,7 @@ public class PreorderIterator {
      * position.
      *
      * @return the current element value
-     * @throws NoSuchElementException if the iteration has no next element
+     * @throws NoSuchElementException if the iterator hasn't next element
      */
     public int next() {
         if (!hasNext()) {
