@@ -22,7 +22,7 @@ public class BinaryTreeTest {
         tree.addValue(15);
         tree.addValue(20);
     }
-    
+
     /**
      * Test of print method, of class BinaryTree.
      */

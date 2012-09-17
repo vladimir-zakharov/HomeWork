@@ -4,7 +4,7 @@ package binaryTree;
  *
  * @author vladimir-zakharov
  */
-public class BinaryTree {
+public class BinaryTree implements Iterable<Integer> {
 
     /**
      * prints all elements
@@ -12,10 +12,10 @@ public class BinaryTree {
     public void print() {
         root.print();
     }
-    
+
     /**
      * add value to the tree
-     * 
+     *
      * @param value value, which you want to add
      */
     public void addValue(int value) {
@@ -23,8 +23,8 @@ public class BinaryTree {
             root = new TreeElement(value, null, null);
         } else {
             TreeElement temp = root;
-            
-            while(temp != null) {
+
+            while (temp != null) {
                 if (temp.getValue() < value) {
                     if (temp.getRight() == null) {
                         temp.setRight(new TreeElement(value, null, null));
@@ -43,17 +43,17 @@ public class BinaryTree {
                     break;
                 }
             }
-        }     
+        }
     }
-    
+
     public TreeElement getRoot() {
         return root;
     }
-    
+
+    @Override
     public PreorderIterator iterator() {
         return new PreorderIterator(this);
     }
-    
     /**
      * head of the tree
      */
