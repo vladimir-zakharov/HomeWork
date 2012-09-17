@@ -9,7 +9,8 @@ import java.util.TimerTask;
  */
 public class LocalNetwork {
 
-    public LocalNetwork() {
+    public LocalNetwork(int[][] structure) {
+        this.networkStructure = structure;
         computers = new Computer[10];
         computers[0] = new Computer(new Windows(), true);
         computers[1] = new Computer(new Linux(), false);
@@ -25,11 +26,22 @@ public class LocalNetwork {
     }
 
     public static void main(String[] args) {
-        myNetwork = new LocalNetwork();
+        int[][] networkStructure = {
+            {0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
+            {0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+            {1, 1, 0, 1, 0, 0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 1, 0, 1, 0, 0},
+            {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 0, 1, 0, 1, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
+            {1, 0, 0, 0, 0, 0, 0, 0, 1, 0}
+        };
+        myNetwork = new LocalNetwork(networkStructure);
         myNetwork.printSysytemState();
 
-        Timer timer = new java.util.Timer();
-        
+        Timer timer = new Timer();
         TimerTask task = new TimerTask() {
 
             @Override
@@ -40,12 +52,11 @@ public class LocalNetwork {
         };
         timer.schedule(task, 5000, 5000);
     }
-    
     private static LocalNetwork myNetwork;
 
     private void updateSystemState() {
         Computer[] currentComptersState = computers;
-        
+
         for (int i = 0; i < 10; ++i) {
             for (int j = 0; j < 10; ++j) {
                 if (networkStructure[i][j] == 1) {
@@ -68,17 +79,7 @@ public class LocalNetwork {
 
         System.out.println();
     }
+    
     private Computer[] computers;
-    private final int[][] networkStructure = {
-        {0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-        {1, 1, 0, 1, 0, 0, 0, 1, 0, 0},
-        {0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 1, 0, 1, 0, 0},
-        {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 1, 0},
-        {0, 0, 1, 0, 1, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 1, 0, 0, 1},
-        {1, 0, 0, 0, 0, 0, 0, 0, 1, 0}
-    };
+    private int[][] networkStructure;
 }
