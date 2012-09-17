@@ -4,11 +4,11 @@ package localNetwork;
  *
  * @author vladimir-zakharov
  */
-abstract public class OperatingSystem {
-    
+public abstract class OperatingSystem {
+
     public int getInfectionProbability() {
         return infectionProbability;
     }
-
+    
     protected int infectionProbability;
 }
