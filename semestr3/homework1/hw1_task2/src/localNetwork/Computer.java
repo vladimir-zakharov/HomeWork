@@ -25,6 +25,10 @@ public class Computer {
         return isInfected;
     }
     
+    public OperatingSystem getOperatingSystem() {
+        return currentOS;
+    } 
+    
     private OperatingSystem currentOS;
     private boolean isInfected;
 }
