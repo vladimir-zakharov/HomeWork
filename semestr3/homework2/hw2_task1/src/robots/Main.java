@@ -23,7 +23,7 @@ public class Main {
      * sets new adjacency matrix of graph
      * and new structure of the robots
      * @param adjacencyMatrix new adjacency matrix of graph
-     * @param strucutre new adjacency matrix for graph
+     * @param strucutre new structure of the robots
      */
     public void setNewStructure(int[][] adjacencyMatrix, int[] strucutre) {
         this.adjacencyMatrix = adjacencyMatrix;
