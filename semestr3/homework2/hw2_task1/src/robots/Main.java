@@ -11,7 +11,7 @@ public class Main {
     
     /**
      * constructor for class Main
-     * @param adjacencyMatrix adjacency matrix for graph
+     * @param adjacencyMatrix adjacency matrix of graph
      * @param strucutre structure of the robots
      */
     public Main(int[][] adjacencyMatrix, int[] strucutre) {
@@ -20,9 +20,9 @@ public class Main {
     }
     
     /**
-     * sets new adjacency matrix for graph
+     * sets new adjacency matrix of graph
      * and new structure of the robots
-     * @param adjacencyMatrix new adjacency matrix for graph
+     * @param adjacencyMatrix new adjacency matrix of graph
      * @param strucutre new adjacency matrix for graph
      */
     public void setNewStructure(int[][] adjacencyMatrix, int[] strucutre) {
