@@ -21,7 +21,8 @@ public class Main {
     }
 
     /**
-     * sets new adjacency matrix of graph and new structure of the robots
+     * sets new adjacency matrix of graph
+     * and new structure of the robots
      *
      * @param adjacencyMatrix new adjacency matrix of graph
      * @param structure new structure of the robots
@@ -32,7 +33,7 @@ public class Main {
     }
 
     /**
-     * calculate number of robots
+     * calculates number of robots
      *
      * @return number of robots
      */
@@ -49,9 +50,10 @@ public class Main {
     }
 
     /**
-     * returns true if robots can be destroyed else returns false
+     * returns true if robots can be destroyed
+     * else returns false
      *
-     * @return true if robots can be destroyed else returns false
+     * @return true if robots can be destroyed else false
      */
     public boolean isSolved() {
         int generalAmount = numberOfRobots();
@@ -108,7 +110,9 @@ public class Main {
     private int[][] adjacencyMatrix;
     
     /**
-     * displays content of the robots in vertices if 1 - robot exists else 0
+     * displays content of the robots in vertices
+     * if 1 - robot exists
+     * else 0
      */
     private int[] structure;
 }
