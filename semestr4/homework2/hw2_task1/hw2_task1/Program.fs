@@ -7,7 +7,7 @@
 
 System.Console.WriteLine(reverseList [1; 3; 2] [])
 
-let rec reverseList2 list =
+let reverseList2 list =
     List.fold(fun reversedList x -> x :: reversedList) [] list
 
 System.Console.WriteLine(reverseList2 [1; 3; 2])
