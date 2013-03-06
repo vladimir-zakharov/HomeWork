@@ -1,6 +1,6 @@
 ﻿let isPrime n =
     let rec check i =
-        n <> 1 && (i > n/2 || (n % i <> 0 && check (i + 1)))
+        n <> 1 && (i > n / 2 || (n % i <> 0 && check (i + 1)))
     check 2
 
 let prime n =
@@ -10,13 +10,10 @@ let prime n =
             res - 1
         else
             if isPrime res then
-                let number = number + 1
-                let res = res + 1
-                find number res
+                find (number + 1) (res + 1)
             else
-                let res = res + 1
-                find number res
+                find number (res + 1)
     find 1 3
 
 let seqPrimes = Seq.initInfinite(prime)
-printfn "%A" seqPrimes
+Seq.take 20 seqPrimes |> Seq.iter(printf "%A ")
