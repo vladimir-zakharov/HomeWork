@@ -2,10 +2,9 @@
     let rec check list length =
         match list with
         | hd :: tl -> 
-            let head = List.head list
-            let filteredList = List.filter ((<>) head) list
+            let filteredList = List.filter ((<>) hd) list
             if List.length filteredList = length - 1 then
-                check (List.tail list) (length - 1)
+                check tl (length - 1)
             else
                 true
         | [] -> false
