@@ -1,15 +1,15 @@
-﻿open System.Collections
+﻿open System.Collections.Generic
 
-let isEmpty (stack : Stack) =
+let isEmpty (stack : Stack<'a>) =
     stack.Count = 0
 
 let checkBalance (str : string) =
-    let stack = new Stack()
+    let stack = new Stack<char>()
     let length = str.Length
     let rec check i =
         if i < length then
             let checkSymbol symbol =
-                let chr = stack.Pop() :?> char 
+                let chr = stack.Pop() 
                 match symbol with
                 | ')' -> chr <> '(' 
                 | '}' -> chr <> '{'
@@ -25,8 +25,7 @@ let checkBalance (str : string) =
                 else check (i + 1)
             | _ -> check (i + 1)
         else
-            if isEmpty stack then true
-            else false
+            isEmpty stack
     check 0
 
 printfn "%b" (checkBalance "()()({})[{()()}{})]")
