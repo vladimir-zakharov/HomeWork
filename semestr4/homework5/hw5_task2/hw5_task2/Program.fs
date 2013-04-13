@@ -14,7 +14,7 @@ type TreeEnumerator<'a when 'a : comparison>(startNode : TreeElement<'a> option)
     let mutable position = startNode.Value
     let stack = Stack<TreeElement<'a> option>()
     do stack.Push(startNode)
-    interface IEnumerator<'a> with
+    interface IEnumerator<TreeElement<'a>> with
         member this.MoveNext() =
             if stack.Count = 0 then
                 false
@@ -27,8 +27,8 @@ type TreeEnumerator<'a when 'a : comparison>(startNode : TreeElement<'a> option)
                 true
         member this.Reset() = 
             position <- startNode.Value
-        member this.Current = position.value
-        member this.get_Current() = position.value :> obj
+        member this.Current = position
+        member this.get_Current() = position :> obj
         member this.Dispose() = ()
 
 type Tree<'a when 'a : comparison>() =
@@ -66,9 +66,9 @@ type Tree<'a when 'a : comparison>() =
                     find node.Value.getRight
         find head
 
-    interface IEnumerable<'a> with
+    interface IEnumerable<TreeElement<'a>> with
         member this.GetEnumerator() =
-            new TreeEnumerator<'a>(head) :> IEnumerator<'a>
+            new TreeEnumerator<'a>(head) :> IEnumerator<TreeElement<'a>>
         member this.GetEnumerator() =
             new TreeEnumerator<'a>(head) :> System.Collections.IEnumerator
 
@@ -85,4 +85,4 @@ printfn "%A" <| tree.isExists 15
 printfn "%A" <| tree.isExists 10
 printfn "%A" <| tree.isExists 18
 printfn "%A" <| tree.isExists 134
-for node in tree do printfn "%A" node
+for node in tree do printfn "%A" node.value
