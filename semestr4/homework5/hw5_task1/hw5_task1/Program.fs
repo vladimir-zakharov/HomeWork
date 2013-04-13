@@ -19,14 +19,14 @@ let Windows =
         member this.infectPossibility = 45
         member this.name = "Windows" }
 
+let rand = Random()
+
 type Computer(os : OperatingSystem, startState : bool) =
     let mutable infestation : bool = startState
     member this.operatingSystem = os
     member this.operatingSystemName = os.name
     member this.isInfected = infestation
     member this.virusAttack =
-        let rand = new Random()
-        
         let temp = rand.Next(100) + 1
         printfn "random number is %d" temp
         
