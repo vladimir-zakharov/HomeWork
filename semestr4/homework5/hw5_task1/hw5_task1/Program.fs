@@ -28,8 +28,6 @@ type Computer(os : OperatingSystem, startState : bool) =
     member this.isInfected = infestation
     member this.virusAttack =
         let temp = rand.Next(100) + 1
-        printfn "random number is %d" temp
-        
         if (temp < os.infectPossibility) then 
             infestation <- true
 
@@ -44,7 +42,7 @@ type LocalNetwork(computers : Computer [], networkStructure : int [] []) =
                printfn "%A" ("computer " + string i + " with operating system " + string computers.[i].operatingSystemName + " isn't infected")
         printfn ""
     member this.getInfectState = 
-        Array.init 10 (fun i -> computers.[i].isInfected)
+        Array.init computers.Length (fun i -> computers.[i].isInfected)
 
     member this.updateState =
         let currentInfectState = this.getInfectState
