@@ -5,7 +5,7 @@ let array = Array.init 1000000 (fun x -> 1)
 let sum10000Elements startPos =
     let rec sum i acc =
         if i > startPos + 9999 then acc
-        else sum (i + 1) (acc + 1)
+        else sum (i + 1) (acc + array.[i])
     sum startPos 0
 
 let mutable res = 0
